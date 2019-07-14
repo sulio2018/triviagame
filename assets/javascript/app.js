@@ -177,6 +177,8 @@ function displayResults() {
     $("#incorrect").html("<h3>Incorrect Answers: " + incorrectAnswers + "</h4>");
     $("#unanswered").html("<h3>Unanswered: " + (questionaire.length - (this.incorrectAnswers + this.correctAnswers)) + "</h3>");
 
+    $("#reload").html("<h3>Reload page to play again!</h3>");
+
 }
 
 
