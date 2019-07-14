@@ -1,0 +1,14 @@
+html {
+    background: url(../images/stadium.jpg) no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    background-color: lavender;
+    text-align: center;
+    padding: 50px;
+    line-height: 40px;
+}

@@ -28,7 +28,7 @@ var questionaire = [{
 
 //set variables
 
-var number = 60;
+var number = 30;
 
 var intervalId;
 
@@ -44,7 +44,7 @@ $("#start").on("click", function () {
     $("#start").remove();
     $("#instructions").remove();
 
-    $("#time").html("<h2>Time remaining: 60 seconds</h2>");
+    $("#time").html("<h2>Time remaining: 30 seconds</h2>");
 
     //start timer
     run();
@@ -162,9 +162,6 @@ function score() {
           incorrectAnswers++;
         }
     });
-
-
-
 }
 
 
@@ -175,10 +172,10 @@ function displayResults() {
     $(".questions-answers").remove();
     $("#submit").remove();
 
-    $("#message").html("<h3>All Done!</h3>");
-    $("#correct").html("<h4>Correct Answers: " + correctAnswers + "</h4>");
-    $("#incorrect").html("<h4>Incorrect Answers: " + incorrectAnswers + "</h4>");
-    $("#unanswered").html("<h4>Unanswered: " + unanswered + "</h4>");
+    $("#message").html("<h3>Your Results:</h3>");
+    $("#correct").html("<h3>Correct Answers: " + correctAnswers + "</h3>");
+    $("#incorrect").html("<h3>Incorrect Answers: " + incorrectAnswers + "</h4>");
+    $("#unanswered").html("<h3>Unanswered: " + (questionaire.length - (this.incorrectAnswers + this.correctAnswers)) + "</h3>");
 
 }
 
