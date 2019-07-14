@@ -54,7 +54,7 @@ $("#start").on("click", function () {
     for (var i = 0; i < questionaire.length; i++) {
         $(".questions-answers").append("<h3>" + questionaire[i].question + "</h3>");
         for (var j = 0; j < questionaire[i].answerList.length; j++) {
-            $(".questions-answers").append("<input type='radio' name='question-" + i +
+            $(".questions-answers").append("<input type='radio' name='radio-group" + i +
                 "' value='" + questionaire[i].answerList[j] + "''>" + " " + questionaire[i].answerList[j]);
         }
     };
@@ -109,7 +109,65 @@ function stop() {
 
 function score() {
 
+    $.each($("input[name='radio-group0']:checked"), function() {
+        if ($(this).val() === questionaire[0].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+    $.each($("input[name='radio-group1']:checked"), function() {
+        if ($(this).val() === questionaire[1].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+    $.each($("input[name='radio-group2']:checked"), function() {
+        if ($(this).val() === questionaire[2].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+    $.each($("input[name='radio-group3']:checked"), function() {
+        if ($(this).val() === questionaire[3].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+    $.each($("input[name='radio-group4']:checked"), function() {
+        if ($(this).val() === questionaire[4].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+    $.each($("input[name='radio-group5']:checked"), function() {
+        if ($(this).val() === questionaire[5].correctAnswer) {
+          correctAnswers++;
+        }
+        else {
+          incorrectAnswers++;
+        }
+    });
+
+
+
 }
+
+
 
 function displayResults() {
 
@@ -118,9 +176,9 @@ function displayResults() {
     $("#submit").remove();
 
     $("#message").html("<h3>All Done!</h3>");
-    $("#correct").html("<h3>Correct Answers: " + correctAnswers + "</h3>");
-    $("#incorrect").html("<h3>Incorrect Answers: " + incorrectAnswers + "</h3>");
-    $("#unanswered").html("<h3>Unanswered: " + unanswered + "</h3>");
+    $("#correct").html("<h4>Correct Answers: " + correctAnswers + "</h4>");
+    $("#incorrect").html("<h4>Incorrect Answers: " + incorrectAnswers + "</h4>");
+    $("#unanswered").html("<h4>Unanswered: " + unanswered + "</h4>");
 
 }
 
