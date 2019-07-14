@@ -1,16 +1,6 @@
-//set variables
-
-var number = 30;
-
-var intervalId; 
-
-var correctAnswerCounter = 0;
-var incorrectAnswerCounter = 0;
-var unansweredCounter = 0;
-
 //questions and answers array
 
-var questionaire =  [{
+var questionaire = [{
     question: "As of 2018, which national team has won the most World Cups?",
     answerList: ["France", "Brazil", "Germany", "Argentina", "Italy"],
     correctAnswer: "Brazil",
@@ -36,27 +26,104 @@ var questionaire =  [{
     correctAnswer: "Mexico 1970",
 }];
 
-//on click function and start the game
+//set variables
 
-$("#start").on("click", function() {
+var number = 60;
+
+var intervalId;
+
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var unanswered = 0;
+
+
+//on click function and start the game. remove button and instructions
+
+$("#start").on("click", function () {
 
     $("#start").remove();
+    $("#instructions").remove();
 
-    $("#time").html("<h2>Time remaining: 30 seconds</h2>");
+    $("#time").html("<h2>Time remaining: 60 seconds</h2>");
+
+    //start timer
+    run();
 
     //display questionaire
 
     for (var i = 0; i < questionaire.length; i++) {
         $(".questions-answers").append("<h3>" + questionaire[i].question + "</h3>");
         for (var j = 0; j < questionaire[i].answerList.length; j++) {
-          $(".questions-answers").append("<input type='radio' name='question-'" + i +
-          "'value='" + questionaire[i].answerList[j] + "''>" + " " + questionaire[i].answerList[j]);
+            $(".questions-answers").append("<input type='radio' name='question-" + i +
+                "' value='" + questionaire[i].answerList[j] + "''>" + " " + questionaire[i].answerList[j]);
         }
     };
 
     $("#submit").html("<button id='done' class='btn'>Done</button>");
 
+    $("#done").on("click", function () {
+
+        //track score function
+        score();
+
+        //display result function
+        displayResults();
+
+    });
+
+});
+
+//set up run function
+
+function run() {
+
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+}
+
+
+function decrement() {
+
+    number--;
+
+    $("#time").html("<h2>Time Remaining: " + number + " Seconds</h2>");
+
+    if (number === 0) {
+
+        stop();
+
+        score();
+        displayResults();
+
+    }
+}
+
+//set up stop function
+
+function stop() {
+
+    clearInterval(intervalId);
+}
+
+//set up results page
+
+function score() {
+
+}
+
+function displayResults() {
+
+    $("#time").remove();
+    $(".questions-answers").remove();
+    $("#submit").remove();
+
+    $("#message").html("<h3>All Done!</h3>");
+    $("#correct").html("<h3>Correct Answers: " + correctAnswers + "</h3>");
+    $("#incorrect").html("<h3>Incorrect Answers: " + incorrectAnswers + "</h3>");
+    $("#unanswered").html("<h3>Unanswered: " + unanswered + "</h3>");
+
+}
 
 
 
-})
+
